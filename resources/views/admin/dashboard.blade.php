@@ -5,12 +5,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard v2</h1>
+                    <h1 class="m-0">Admin Dashboard</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active">Dashboard v2</li>
+                        <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
+                        <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -489,8 +489,8 @@
                                 <!-- /.item -->
                                 <li class="item">
                                     <div class="product-img">
-                                        <img src="{{ asset('backend/dist/img/default-150x150.png') }}" alt="Product Image"
-                                            class="img-size-50">
+                                        <img src="{{ asset('backend/dist/img/default-150x150.png') }}"
+                                            alt="Product Image" class="img-size-50">
                                     </div>
                                     <div class="product-info">
                                         <a href="javascript:void(0)" class="product-title">Bicycle
