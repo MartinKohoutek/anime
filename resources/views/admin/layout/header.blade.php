@@ -131,6 +131,30 @@
                  <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
              </div>
          </li>
+
+         <li class="nav-item dropdown">
+             <a class="nav-link" data-toggle="dropdown" href="#">
+                 <i class="fas fa-user"></i>
+             </a>
+             <div class="dropdown-menu  dropdown-menu-right">
+                 <a href="#" class="dropdown-item">
+                     <i class="fas fa-user-circle mr-2"></i> Profile
+                 </a>
+                 <a href="#" class="dropdown-item">
+                     <i class="fas fa-cog mr-2"></i> Settings
+                 </a>
+                 <a href="#" class="dropdown-item">
+                     <i class="fas fa-tachometer-alt mr-2"></i> Dashboard
+                 </a>
+                 <a href="#" class="dropdown-item">
+                     <i class="fas fa-download mr-2"></i> Downloads
+                 </a>
+                 <div class="dropdown-divider"></div>
+                 <a href="#" class="dropdown-item">
+                     <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                 </a>
+             </div>
+         </li>
      </ul>
  </nav>
  <!-- /.navbar -->
