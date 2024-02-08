@@ -150,9 +150,13 @@
                      <i class="fas fa-download mr-2"></i> Downloads
                  </a>
                  <div class="dropdown-divider"></div>
-                 <a href="#" class="dropdown-item">
-                     <i class="fas fa-sign-out-alt mr-2"></i> Logout
-                 </a>
+                 <form action="{{ route('admin.logout') }}" method="post">
+                     @csrf
+                     <a href="{{ route('admin.logout') }}" class="dropdown-item"
+                         onclick="event.preventDefault(); this.closest('form').submit()">
+                         <i class="fas fa-sign-out-alt mr-2"></i> Logout
+                     </a>
+                 </form>
              </div>
          </li>
      </ul>
