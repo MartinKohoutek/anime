@@ -1,0 +1,4 @@
+.custom-file-label::after {
+    background-color: #3f6791 !important;
+    font-weight: 500;
+}
