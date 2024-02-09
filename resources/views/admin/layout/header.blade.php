@@ -140,8 +140,8 @@
                  <a href="{{ route('admin.profile') }}" class="dropdown-item">
                      <i class="fas fa-user-circle mr-2"></i> Profile
                  </a>
-                 <a href="#" class="dropdown-item">
-                     <i class="fas fa-cog mr-2"></i> Settings
+                 <a href="{{ route('admin.profile.password') }}" class="dropdown-item">
+                     <i class="fas fa-cog mr-2"></i> Change Password
                  </a>
                  <a href="#" class="dropdown-item">
                      <i class="fas fa-tachometer-alt mr-2"></i> Dashboard

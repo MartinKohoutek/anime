@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
 
 class AdminProfileController extends Controller
 {
@@ -48,6 +49,27 @@ class AdminProfileController extends Controller
         $user->save();
 
         toastr()->success('User Profile Updated Successfully!');
+
+        return redirect()->back();
+    }
+
+    public function profilePassword()
+    {
+        return view('admin.profile.password');
+    }
+
+    public function profilePasswordUpdate(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required|current_password',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        $request->user()->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        toastr()->success('Password Changed Successfully!');
 
         return redirect()->back();
     }
