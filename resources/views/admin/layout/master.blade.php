@@ -60,14 +60,16 @@
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     <script src="{{ asset('backend/dist/js/pages/dashboard2.js') }}"></script>
 
-
     <script>
         @if ($errors->any())
             @foreach ($errors->all() as $error)
+                toastr.options.closeButton = true;
                 toastr.error("{{ $error }}");
             @endforeach
         @endif
     </script>
+
+    @stack('scripts')
 </body>
 
 </html>

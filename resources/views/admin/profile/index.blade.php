@@ -27,7 +27,8 @@
                         <div class="card-body box-profile">
                             <div class="text-center">
                                 <img class="profile-user-img img-fluid img-circle"
-                                    src="{{ asset('backend/dist/img/user4-128x128.jpg') }}" alt="User profile picture">
+                                    src="{{ !empty(Auth::user()->photo) ? asset(Auth::user()->photo) : asset('upload/no_image.jpg') }}"
+                                    alt="User profile picture">
                             </div>
 
                             <h3 class="profile-username text-center">Nina Mcintire</h3>
@@ -72,35 +73,35 @@
                                     <label for="name" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="name" class="form-control" id="name"
-                                            placeholder="Name" value="{{ old('name') }}">
+                                            placeholder="Name" value="{{ Auth::user()->name }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="username" class="col-sm-2 col-form-label">User Name</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="username" class="form-control" id="username"
-                                            placeholder="User Name" value="{{ old('email') }}">
+                                            placeholder="User Name" value="{{ Auth::user()->username }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-2 col-form-label">Email</label>
                                     <div class="col-sm-10">
                                         <input type="email" name="email" class="form-control" id="email"
-                                            placeholder="Email" value="{{ old('email') }}">
+                                            placeholder="Email" value="{{ Auth::user()->email }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="phone" class="col-sm-2 col-form-label">Phone</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="phone" class="form-control" id="phone"
-                                            placeholder="Phone" value="{{ old('phone') }}">
+                                            placeholder="Phone" value="{{ Auth::user()->phone }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
                                     <label for="address" class="col-sm-2 col-form-label">Address</label>
                                     <div class="col-sm-10">
                                         <input type="text" name="address" class="form-control" id="address"
-                                            placeholder="Address" value="{{ old('address') }}">
+                                            placeholder="Address" value="{{ Auth::user()->address }}">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -120,8 +121,9 @@
                                     <label for="" class="col-sm-2 col-form-label"></label>
                                     <div class="col-sm-10">
                                         <img class="profile-user-img img-fluid"
-                                            src="{{ asset('backend/dist/img/user4-128x128.jpg') }}"
-                                            alt="User profile picture" style="width: 150px; height: 150px">
+                                            src="{{ !empty(Auth::user()->photo) ? asset(Auth::user()->photo) : asset('upload/no_image.jpg') }}"
+                                            alt="User profile picture" style="width: 150px; height: 150px"
+                                            id="showImage">
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -180,3 +182,16 @@
     <!-- /.content -->
     </div>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('#photo').change(function(e) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    $('#showImage').attr('src', e.target.result);
+                }
+                reader.readAsDataURL(e.target.files[0]);
+            })
+        })
+    </script>
+@endpush
