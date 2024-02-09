@@ -65,7 +65,9 @@
                             </div>
                         </div><!-- /.card-header -->
                         <div class="card-body">
-                            <form class="form-horizontal">
+                            <form class="form-horizontal" method="POST" action="{{ route('admin.profile.update') }}"
+                                enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group row">
                                     <label for="name" class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
@@ -124,7 +126,7 @@
                                 </div>
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger">Update Profile</button>
+                                        <button type="submit" class="btn btn-primary">Update Profile</button>
                                     </div>
                                 </div>
                             </form>
@@ -163,7 +165,7 @@
 
                                 <div class="form-group row">
                                     <div class="offset-sm-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger">Update Password</button>
+                                        <button type="submit" class="btn btn-primary">Update Password</button>
                                     </div>
                                 </div>
                             </form>
