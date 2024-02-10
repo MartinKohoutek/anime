@@ -132,9 +132,12 @@
              </div>
          </li>
 
-         <li class="nav-item dropdown">
+         <li class="nav-item dropdown" style="border-left: 1px solid black">
              <a class="nav-link" data-toggle="dropdown" href="#">
-                 <i class="fas fa-user"></i>
+                 {{-- <i class="fas fa-user"></i> --}}
+                 <img src="{{ !empty(Auth::user()->photo) ? asset(Auth::user()->photo) : asset('upload/no_image.jpg') }}"
+                     class="img-circle elevation-2" alt="User Image" style="width: 25px; margin-right: 10px">
+                 <span>{{ Auth::user()->username }}<i class="fas fa-angle-down right"></i></span>
              </a>
              <div class="dropdown-menu  dropdown-menu-right">
                  <a href="{{ route('admin.profile') }}" class="dropdown-item">
