@@ -549,3 +549,15 @@
     </section>
     <!-- /.content -->
 @endsection
+@push('scripts')
+    <!-- jQuery Mapael -->
+    <script src="{{ asset('backend/plugins/jquery-mousewheel/jquery.mousewheel.js') }}"></script>
+    <script src="{{ asset('backend/plugins/raphael/raphael.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/jquery-mapael/jquery.mapael.min.js') }}"></script>
+    <script src="{{ asset('backend/plugins/jquery-mapael/maps/usa_states.min.js') }}"></script>
+    <!-- ChartJS -->
+    <script src="{{ asset('backend/plugins/chart.js/Chart.min.js') }}"></script>
+
+    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+    <script src="{{ asset('backend/dist/js/pages/dashboard2.js') }}"></script>
+@endpush
