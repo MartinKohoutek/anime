@@ -1,4 +1,5 @@
 @extends('admin.layout.master')
+@section('title', 'Admin Change Password')
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
