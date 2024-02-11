@@ -26,6 +26,17 @@
                              </li>
                              <li><a href="./blog.html">Our Blog</a></li>
                              <li><a href="#">Contacts</a></li>
+                             @auth
+                                 <li>
+                                     <form method="POST" action="{{ route('logout') }}">
+                                         @csrf
+                                         <a href="{{ route('logout') }}"
+                                             onclick="event.preventDefault(); this.closest('form').submit()">Logout</a>
+                                     </form>
+                                 </li>
+                             @else
+                                 <li><a href="{{ route('login') }}">Login</a></li>
+                             @endauth
                          </ul>
                      </nav>
                  </div>
