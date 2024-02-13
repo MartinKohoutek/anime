@@ -1,5 +1,5 @@
 @extends('frontend.layout.master')
-@section('title', 'Login')
+@section('title', 'Forgot Password')
 @section('content')
     <!-- Normal Breadcrumb Begin -->
     <section class="normal-breadcrumb set-bg" data-setbg="{{ asset('frontend/img/normal-breadcrumb.jpg') }}">
@@ -24,7 +24,7 @@
                 <div class="col-lg-6">
                     <div class="login__form">
                         <h3>Forgot password</h3>
-                        <form action="#" method="POST" action="{{ route('password.email') }}">
+                        <form method="POST" action="{{ route('password.email') }}">
                             @csrf
                             <div class="input__item">
                                 <input type="email" name="email" id="email" placeholder="Email address"
@@ -32,9 +32,10 @@
                                 <span class="icon_mail"></span>
                             </div>
 
-                            <button type="submit" class="site-btn">EmailPassword Reset Link</button>
+                            <button type="submit" class="site-btn">Send Reset Link</button>
                         </form>
-                        <a href="{{ route('login') }}" class="forget_pass" style="bottom: -50px">Back to Login</a>
+                        <a href="{{ route('login') }}" class="forget_pass" style="bottom: 10px; right: 50px">Back to
+                            Login</a>
                     </div>
                 </div>
                 <div class="col-lg-6">
