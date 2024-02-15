@@ -1,13 +1,13 @@
-<div class="col-md-4 mb-3">
+<div class="col-md-3 mb-3">
     <div class="card">
         <div class="card-body">
             <div class="d-flex flex-column align-items-center text-center">
-                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle"
-                    width="150">
+                <img src="{{ !empty(Auth::user()->photo) ? asset(Auth::user()->photo) : asset('upload/avatar.png') }}"
+                    alt="User Avatar" class="rounded-circle" width="150">
                 <div class="mt-3">
-                    <h4>John Doe</h4>
-                    <p class="text-secondary mb-1">Full Stack Developer</p>
-                    <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
+                    <h4>{{ Auth::user()->name }}</h4>
+                    <p class="text-secondary mb-1">{{ Auth::user()->email }}</p>
+                    <p class="text-muted font-size-sm">{{ Auth::user()->address }}</p>
                     <button class="btn btn-primary">Follow</button>
                     <button class="btn btn-outline-primary">Message</button>
                 </div>

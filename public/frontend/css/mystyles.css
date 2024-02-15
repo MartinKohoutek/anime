@@ -5,7 +5,7 @@
     overflow: hidden;
     background-color: #ffffff;
     color: #ecf0f1;
-    border: 3px solid blue;
+    border: 5px solid #17a2b8;
   }
   #image-preview input {
     line-height: 200px;
@@ -19,16 +19,18 @@
     z-index: 5;
     opacity: 0.8;
     cursor: pointer;
-    background-color: #bdc3c7;
+    /* background-color: #bdc3c7;   previous color  */
+    background-color: #17a2b8;
     width: 80%;
-    height: 50px;
+    height: 40px;
     font-size: 20px;
-    line-height: 50px;
+    line-height: 40px;
     text-transform: uppercase;
-    top: 0;
+    /* top: 0; */
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 10px;
     margin: auto;
     text-align: center;
+    border-radius: 15px;
   }

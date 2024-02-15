@@ -24,7 +24,7 @@
                 <div class="row">
                     {{-- <div class="row gutters-sm"> --}}
                     @include('frontend.profile.layout.sidebar')
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="card mb-3">
                             <div class="card-body">
                                 <form action="{{ route('user.profile.update') }}" method="post"
@@ -38,7 +38,7 @@
                                         <div class="col-sm-9 text-secondary">
                                             <div id="image-preview">
                                                 <label for="image-upload" id="image-label">Choose File</label>
-                                                <input type="file" name="image" id="image-upload" />
+                                                <input type="file" name="photo" id="image-upload" />
                                             </div>
                                         </div>
                                     </div>
