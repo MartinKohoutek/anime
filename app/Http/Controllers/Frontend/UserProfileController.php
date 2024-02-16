@@ -5,11 +5,12 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use App\Http\Requests\Frontend\ProfileUpdateRequest;
+use App\Models\User;
 use App\Traits\ImageUploadTrait;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Auth;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserProfileController extends Controller
 {
@@ -34,6 +35,29 @@ class UserProfileController extends Controller
         $user->save();
 
         toastr()->success('User Profile Updated Successfully!');
+
+        return redirect()->back();
+    }
+
+    public function changePassword()
+    {
+        return view('frontend.profile.change-password');
+    }
+
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'old_password' => 'required|current_password',
+            'new_password' => 'required|confirmed',
+        ]);
+
+        $user = User::findOrFail(Auth::user()->id);
+
+        $user->update([
+            'password' => Hash::make($request->new_password),
+        ]);
+
+        toastr()->success('Password Changed Successfully!');
 
         return redirect()->back();
     }

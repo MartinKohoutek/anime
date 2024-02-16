@@ -53,9 +53,9 @@
                                  </a>
                                  <ul class="dropdown">
                                      @auth
-                                         <li><a href="{{ route('user.profile') }}">User Profile</a></li>
                                          <li><a href="{{ route('user.dashboard') }}">User Dashboard</a></li>
-                                         <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                         <li><a href="{{ route('user.profile') }}">User Profile</a></li>
+                                         <li><a href="{{ route('user.change.password') }}">Change Password</a></li>
                                          <li><a href="./blog-details.html">Blog Details</a></li>
                                          <li><a href="./signup.html">Sign Up</a></li>
                                          <li>
