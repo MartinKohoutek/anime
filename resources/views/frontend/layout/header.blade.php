@@ -42,9 +42,37 @@
                  </div>
              </div>
              <div class="col-lg-2">
-                 <div class="header__right">
-                     <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                     <a href="./login.html"><span class="icon_profile"></span></a>
+                 <div class="header__nav header__right">
+                     <nav class="header__menu mobile-menu">
+                         <ul class="d-flex">
+                             <li><a href="#" class="search-switch"><span class="icon_search"></span></a></li>
+                             <li>
+                                 <a href="">
+                                     <span class="icon_profile"></span>
+                                     <span class="arrow_carrot-down"></span>
+                                 </a>
+                                 <ul class="dropdown">
+                                     @auth
+                                         <li><a href="{{ route('user.profile') }}">User Profile</a></li>
+                                         <li><a href="{{ route('user.dashboard') }}">User Dashboard</a></li>
+                                         <li><a href="./anime-watching.html">Anime Watching</a></li>
+                                         <li><a href="./blog-details.html">Blog Details</a></li>
+                                         <li><a href="./signup.html">Sign Up</a></li>
+                                         <li>
+                                             <form action="{{ route('logout') }}" method="post">
+                                                 @csrf
+                                                 <a href="{{ route('logout') }}"
+                                                     onclick="event.preventDefault(); this.closest('form').submit()">Logout</a>
+                                             </form>
+                                         </li>
+                                     @else
+                                         <li><a href="{{ route('login') }}">Login</a></li>
+                                         <li><a href="{{ route('register') }}">Register</a></li>
+                                     @endauth
+                                 </ul>
+                             </li>
+                         </ul>
+                     </nav>
                  </div>
              </div>
          </div>
