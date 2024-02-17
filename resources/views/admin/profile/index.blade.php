@@ -141,8 +141,6 @@
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
-    <!-- /.content -->
-    </div>
 @endsection
 @push('scripts')
     <script>

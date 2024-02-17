@@ -24,10 +24,10 @@
                 </li>
                 <li class="nav-header">MANAGE WEBSITE</li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
+                    <a href="{{ route('admin.category.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Widgets
+                            Category
                         </p>
                     </a>
                 </li>
