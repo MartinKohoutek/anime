@@ -31,7 +31,8 @@
                             <h3 class="card-title">Categories</h3>
                             <div class="card-tools">
                                 <div class="input-group input-group-sm">
-                                    <a href="" class="btn btn-success btn-sm">Create Category</a>
+                                    <a href="{{ route('admin.category.create') }}" class="btn btn-success btn-sm">Create
+                                        Category</a>
                                 </div>
                             </div>
                         </div>
