@@ -1,9 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Category Index')
-@push('css')
-    {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"> --}}
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.bootstrap5.css">
-@endpush
+@section('title', 'Update Category')
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -30,7 +26,6 @@
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Create Category</h3>
-
                         </div>
                         <form class="form-horizontal" action="{{ route('admin.category.store') }}" method="POST">
                             @csrf
