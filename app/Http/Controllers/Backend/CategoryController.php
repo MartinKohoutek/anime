@@ -92,8 +92,6 @@ class CategoryController extends Controller
     {
         Category::findOrFail($id)->delete();
 
-        toastr()->success('Category Deleted Successfully!');
-
-        return redirect()->back();
+        return response(['status' => 'success', 'message' => 'Category Deleted Successfuly']);
     }
 }

@@ -24,7 +24,7 @@ class CategoryDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
                 $btnEdit = '<a href="' . route('admin.category.edit', $query->id) . '" class="btn btn-success btn-sm mx-2"><i class="fas fa-edit"></i></a>';
-                $btnDelete = '<a href="' . route('admin.category.destroy', $query->id) . '" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>';
+                $btnDelete = '<a href="' . route('admin.category.destroy', $query->id) . '" class="btn btn-danger btn-sm delete-item"><i class="fas fa-trash"></i></a>';
                 return $btnEdit . $btnDelete;
             })
             ->addColumn('status', function ($query) {
