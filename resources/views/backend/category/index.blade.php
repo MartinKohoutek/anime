@@ -52,4 +52,30 @@
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.js"></script>
     <script src="https://cdn.datatables.net/2.0.0/js/dataTables.bootstrap5.js"></script>
     {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+
+    <script>
+        $(document).ready(function() {
+            $('body').on('click', '.change-status', function() {
+                var id = $(this).data('id');
+                var status = $(this).is(':checked') ? 'active' : 'inactive';
+
+                $.ajax({
+                    url: "{{ route('admin.category.change-status') }}",
+                    method: "put",
+                    data: {
+                        id: id,
+                        status: status,
+                        _token: "{{ csrf_token() }}",
+                    },
+                    success: function(data) {
+                        toastr.options.closeButton = true;
+                        toastr.success(data.message);
+                    },
+                    error: function(e) {
+                        console.log(e);
+                    }
+                });
+            });
+        });
+    </script>
 @endpush

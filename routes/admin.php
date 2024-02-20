@@ -13,4 +13,5 @@ Route::get('/profile/password', [AdminProfileController::class, 'profilePassword
 Route::post('/profile/password/update', [AdminProfileController::class, 'profilePasswordUpdate'])->name('profile.password.update');
 
 /** Category routes */
+Route::put('/category/change-status', [CategoryController::class, 'changeStatus'])->name('category.change-status');
 Route::resource('/category', CategoryController::class);

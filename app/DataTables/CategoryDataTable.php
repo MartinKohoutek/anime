@@ -31,8 +31,8 @@ class CategoryDataTable extends DataTable
                 $status = $query->status == 'active' ? 'checked' : '';
                 $btn = '<div class="form-group">
                     <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
-                    <input type="checkbox" class="custom-control-input" id="status" ' . $status . '>
-                    <label class="custom-control-label" for="status"></label>
+                    <input type="checkbox" class="custom-control-input change-status" data-id="' . $query->id . '" id="status' . $query->id . '" ' . $status . '>
+                    <label class="custom-control-label" for="status' . $query->id . '"></label>
                     </div>
                 </div>';
                 return $btn;
