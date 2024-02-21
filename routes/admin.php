@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\EntityController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
@@ -15,3 +16,7 @@ Route::post('/profile/password/update', [AdminProfileController::class, 'profile
 /** Category routes */
 Route::put('/category/change-status', [CategoryController::class, 'changeStatus'])->name('category.change-status');
 Route::resource('/category', CategoryController::class);
+
+/** Entity routes */
+Route::put('/entity/change-status', [EntityController::class, 'changeStatus'])->name('entity.change-status');
+Route::resource('/entity', EntityController::class);

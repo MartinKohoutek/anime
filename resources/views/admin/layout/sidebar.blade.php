@@ -32,6 +32,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.entity.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-film"></i>
+                        <p>
+                            Entities
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-copy"></i>
                         <p>
