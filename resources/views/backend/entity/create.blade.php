@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Update Category')
+@section('title', 'Create Entity')
 @section('content')
     <section class="content-header">
         <div class="container-fluid">
@@ -27,7 +27,8 @@
                         <div class="card-header">
                             <h3 class="card-title">Create Entity</h3>
                         </div>
-                        <form class="form-horizontal" action="{{ route('admin.category.store') }}" method="POST">
+                        <form class="form-horizontal" action="{{ route('admin.entity.store') }}" method="POST"
+                            enctype="multipart/form-data">
                             @csrf
                             <div class="card-body">
                                 <div class="form-group row">
@@ -69,10 +70,15 @@
                                     </div>
                                 </div>
                                 <div class="form-group row">
-                                    <label for="preview" class="col-sm-2 col-form-label">Preview (Video URL)</label>
+                                    <label for="preview" class="col-sm-2 col-form-label">Video Preview</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="preview" class="form-control" id="preview"
-                                            placeholder="Enter Video Preview URL" value="{{ old('preview') }}">
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" name="preview" class="custom-file-input"
+                                                    id="preview" value="{{ old('preview') }}">
+                                                <label class="custom-file-label" for="preview"></label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row">
@@ -97,6 +103,8 @@
     </section>
 @endsection
 @push('scripts')
+    <script src="{{ asset('backend/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+
     <script>
         $(document).ready(function() {
             $('#thumbnail').change(function(e) {
@@ -107,5 +115,9 @@
                 reader.readAsDataURL(e.target.files[0]);
             })
         })
+
+        $(function() {
+            bsCustomFileInput.init();
+        });
     </script>
 @endpush

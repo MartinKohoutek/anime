@@ -1,5 +1,5 @@
 @extends('admin.layout.master')
-@section('title', 'Category Index')
+@section('title', 'Entity Index')
 @push('css')
     {{-- <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.0/css/dataTables.bootstrap5.css">

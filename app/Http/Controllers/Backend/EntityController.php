@@ -5,10 +5,15 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\EntityDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Entity;
+use App\Traits\ImageUploadTrait;
+use App\Traits\VideoUploadTrait;
 use Illuminate\Http\Request;
 
 class EntityController extends Controller
 {
+    use ImageUploadTrait, VideoUploadTrait;
+
     /**
      * Display a listing of the resource.
      */
@@ -31,7 +36,29 @@ class EntityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|max:100|string',
+            'category' => 'required',
+            'thumbnail' => 'required|image|max:4096',
+            'preview' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,video/quicktime|max:102400',
+            'status' => 'required',
+        ]);
+
+        $entity = new Entity();
+
+        $img = $this->uploadImage($request, 'thumbnail', '/upload/entities/thumbnails');
+        $video = $this->uploadVideo($request, 'preview', '/upload/entities/previews');
+
+        $entity->name = $request->name;
+        $entity->category_id = $request->category;
+        $entity->status = $request->status;
+        $entity->thumbnail = $img;
+        $entity->preview = $video;
+        $entity->save();
+
+        toastr()->success('Entity Created Successfully');
+
+        return redirect()->route('admin.entity.index');
     }
 
     /**
