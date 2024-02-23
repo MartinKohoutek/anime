@@ -22,7 +22,28 @@ class EntityDataTable extends DataTable
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
         return (new EloquentDataTable($query))
-            ->addColumn('action', 'entity.action')
+            ->addColumn('action', function ($query) {
+                $btnEdit = "<a href='" . route('admin.entity.edit', $query->id) . "' class='btn btn-primary mx-2'><i class='fas fa-edit'></i></a>";
+                $btnDelete = "<a href='" . route('admin.entity.destroy', $query->id) . "' class='btn btn-danger'><i class='fas fa-trash'></i></a>";
+                return $btnEdit . $btnDelete;
+            })
+            ->addColumn('status', function ($query) {
+                $status = $query->status == 'active' ? 'checked' : '';
+                $btn = '<div class="form-group">
+                    <div class="custom-control custom-switch custom-switch-off-danger custom-switch-on-success">
+                    <input type="checkbox" class="custom-control-input change-status" data-id="' . $query->id . '" id="status' . $query->id . '" ' . $status . '>
+                    <label class="custom-control-label" for="status' . $query->id . '"></label>
+                    </div>
+                </div>';
+                return $btn;
+            })
+            ->addColumn('thumbnail', function ($query) {
+                return "<img src='" . $query->thumbnail . "' style='height:40px' />";
+            })
+            ->addColumn('category', function ($query) {
+                return $query->category->name;
+            })
+            ->rawColumns(['thumbnail', 'action', 'status', 'category'])
             ->setRowId('id');
     }
 
@@ -40,20 +61,20 @@ class EntityDataTable extends DataTable
     public function html(): HtmlBuilder
     {
         return $this->builder()
-                    ->setTableId('entity-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    //->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->selectStyleSingle()
-                    ->buttons([
-                        Button::make('excel'),
-                        Button::make('csv'),
-                        Button::make('pdf'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    ]);
+            ->setTableId('entity-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            //->dom('Bfrtip')
+            ->orderBy(0, 'asc')
+            ->selectStyleSingle()
+            ->buttons([
+                Button::make('excel'),
+                Button::make('csv'),
+                Button::make('pdf'),
+                Button::make('print'),
+                Button::make('reset'),
+                Button::make('reload')
+            ]);
     }
 
     /**
@@ -62,15 +83,16 @@ class EntityDataTable extends DataTable
     public function getColumns(): array
     {
         return [
+            Column::make('id')->width(60),
+            Column::make('thumbnail')->width(140),
+            Column::make('name'),
+            Column::make('category'),
+            Column::make('status')->width(80),
             Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+                ->exportable(false)
+                ->printable(false)
+                ->width(140)
+                ->addClass('text-center'),
         ];
     }
 

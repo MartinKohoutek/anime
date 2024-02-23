@@ -92,4 +92,13 @@ class EntityController extends Controller
     {
         //
     }
+
+    public function changeStatus(Request $request)
+    {
+        $entity = Entity::findOrFail($request->id);
+        $entity->status = $request->status;
+        $entity->save();
+
+        return response()->json(['message' => 'Status Changed Successfully!']);
+    }
 }
