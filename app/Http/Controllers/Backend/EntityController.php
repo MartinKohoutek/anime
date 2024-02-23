@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\DataTables\EntityDataTable;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Backend\EntityStoreRequest;
 use App\Models\Category;
 use App\Models\Entity;
 use App\Traits\ImageUploadTrait;
@@ -34,16 +35,8 @@ class EntityController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EntityStoreRequest $request)
     {
-        $request->validate([
-            'name' => 'required|max:100|string',
-            'category' => 'required',
-            'thumbnail' => 'required|image|max:4096',
-            'preview' => 'required|mimetypes:video/avi,video/mpeg,video/mp4,video/quicktime|max:102400',
-            'status' => 'required',
-        ]);
-
         $entity = new Entity();
 
         $img = $this->uploadImage($request, 'thumbnail', '/upload/entities/thumbnails');
@@ -74,7 +67,9 @@ class EntityController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $categories = Category::all();
+        $entity = Entity::findOrFail($id);
+        return view('backend.entity.edit', compact('entity', 'categories'));
     }
 
     /**
