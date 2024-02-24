@@ -27,8 +27,8 @@
                         <div class="card-header">
                             <h3 class="card-title">Update Entity</h3>
                         </div>
-                        <form class="form-horizontal" action="{{ route('admin.entity.store') }}" method="POST"
-                            enctype="multipart/form-data">
+                        <form class="form-horizontal" action="{{ route('admin.entity.update', $entity->id) }}"
+                            method="POST" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="card-body">
@@ -47,8 +47,8 @@
                                             <div class="custom-file">
                                                 <input type="file" name="thumbnail" class="custom-file-input"
                                                     id="thumbnail">
-                                                <label class="custom-file-label" for="thumbnail">Choose
-                                                    Thumbnail</label>
+                                                <label class="custom-file-label"
+                                                    for="thumbnail">{{ basename($entity->thumbnail) }}</label>
                                             </div>
                                         </div>
                                     </div>
@@ -79,7 +79,8 @@
                                             <div class="custom-file">
                                                 <input type="file" name="preview" class="custom-file-input"
                                                     id="preview">
-                                                <label class="custom-file-label" for="preview"></label>
+                                                <label class="custom-file-label"
+                                                    for="preview">{{ basename($entity->preview) }}</label>
                                             </div>
                                         </div>
                                     </div>

@@ -11,7 +11,7 @@ class EntityUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class EntityUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|max:100|string',
+            'category' => 'required',
+            'thumbnail' => 'nullable|image|max:4096',
+            'preview' => 'nullable|mimetypes:video/avi,video/mpeg,video/mp4,video/quicktime|max:102400',
+            'status' => 'required',
         ];
     }
 }

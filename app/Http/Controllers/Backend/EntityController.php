@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\DataTables\EntityDataTable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Backend\EntityStoreRequest;
+use App\Http\Requests\Backend\EntityUpdateRequest;
 use App\Models\Category;
 use App\Models\Entity;
 use App\Traits\ImageUploadTrait;
@@ -75,9 +76,23 @@ class EntityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(EntityUpdateRequest $request, string $id)
     {
-        //
+        $entity = Entity::findOrFail($id);
+
+        $img = $this->updateImage($request, 'thumbnail', '/upload/entities/thumbnails', $entity->thumbnail);
+        $video = $this->uploadVideo($request, 'preview', '/upload/entities/previews', $entity->preview);
+
+        $entity->thumbnail = !empty($img) ? $img : $entity->thumbnail;
+        $entity->preview = !empty($video) ? $video : $entity->preview;
+        $entity->name = $request->name;
+        $entity->category_id = $request->category;
+        $entity->status = $request->status;
+        $entity->save();
+
+        toastr()->success('Entity Updated Successfully!');
+
+        return redirect()->route('admin.entity.index');
     }
 
     /**
