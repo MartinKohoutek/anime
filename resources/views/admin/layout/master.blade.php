@@ -62,12 +62,6 @@
         @endif
 
         $(document).ready(function() {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-                }
-            })
-
             $('body').on('click', '.delete-item', function(e) {
                 e.preventDefault();
 
@@ -86,6 +80,9 @@
                         $.ajax({
                             type: 'delete',
                             url: deleteUrl,
+                            data: {
+                                _token: "{{ csrf_token() }}",
+                            },
                             success: function(data) {
                                 if (data.status == 'success') {
                                     Swal.fire({
