@@ -24,7 +24,7 @@ class EntityDataTable extends DataTable
         return (new EloquentDataTable($query))
             ->addColumn('action', function ($query) {
                 $btnEdit = "<a href='" . route('admin.entity.edit', $query->id) . "' class='btn btn-primary mx-2'><i class='fas fa-edit'></i></a>";
-                $btnDelete = "<a href='" . route('admin.entity.destroy', $query->id) . "' class='btn btn-danger'><i class='fas fa-trash'></i></a>";
+                $btnDelete = "<a href='" . route('admin.entity.destroy', $query->id) . "' class='btn btn-danger delete-item'><i class='fas fa-trash'></i></a>";
                 return $btnEdit . $btnDelete;
             })
             ->addColumn('status', function ($query) {

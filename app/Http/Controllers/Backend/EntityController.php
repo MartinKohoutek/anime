@@ -100,7 +100,12 @@ class EntityController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $entity = Entity::findOrFail($id);
+        $this->deleteImage($entity->thumbnail);
+        $this->deleteVideo($entity->preview);
+        $entity->delete();
+
+        return response(['status' => 'success', 'message' => 'Category Deleted Successfuly']);
     }
 
     public function changeStatus(Request $request)

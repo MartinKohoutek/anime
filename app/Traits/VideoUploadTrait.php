@@ -23,6 +23,15 @@ trait VideoUploadTrait
         return null;
     }
 
+    public function deleteVideo(string $path)
+    {
+        //On Live Server uncomment this
+        // if (File::exists(public_path($path))) {
+        //     File::delete(public_path($path));
+        // }
+        return null;
+    }
+
     // This Version is for Video Upload on Live Server; rename it on uploadVideo()
     public function uploadVideoLive(Request $request, $inputName, $path = '/upload', $oldPath = null)
     {
