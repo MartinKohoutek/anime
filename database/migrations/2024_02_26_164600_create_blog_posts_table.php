@@ -13,12 +13,14 @@ return new class extends Migration
     {
         Schema::create('blog_posts', function (Blueprint $table) {
             $table->id();
-            $table->integer('category_id');
-            $table->integer('user_id');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('category_id')->constrained('blog_categories')->onDelete('cascade');
+            $table->text('image');
             $table->string('title');
             $table->string('slug');
-            $table->text('image');
             $table->text('description');
+            $table->string('seo_title')->nullable();
+            $table->string('seo_description')->nullable();
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->timestamps();
         });

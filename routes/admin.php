@@ -26,4 +26,5 @@ Route::resource('/entity', EntityController::class);
 /** Blog routes */
 Route::put('/blog/category/change-status', [BlogCategoryController::class, 'changeStatus'])->name('blog.category.change-status');
 Route::resource('/blog/category', BlogCategoryController::class, ['as' => 'blog']);
+Route::put('/blog/post/change-status', [BlogPostController::class, 'changeStatus'])->name('blog.post.change-status');
 Route::resource('/blog/post', BlogPostController::class, ['as' => 'blog']);
