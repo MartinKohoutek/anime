@@ -85,41 +85,26 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-header">EXAMPLES</li>
+                <li class="nav-header">Blog</li>
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
-                        <i class="nav-icon fas fa-calendar-alt"></i>
+                    <a href="{{ route('admin.blog.category.index') }}" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
                         <p>
-                            Calendar
+                            Categories
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon far fa-envelope"></i>
-                        <p>
-                            Mailbox
-                            <i class="fas fa-angle-left right"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="pages/mailbox/mailbox.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inbox</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="pages/mailbox/compose.html" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Compose</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="{{ route('admin.blog.post.index') }}" class="nav-link">
                         <i class="nav-icon fas fa-book"></i>
+                        <p>
+                            Posts
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             Pages
                             <i class="fas fa-angle-left right"></i>
