@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AdminProfileController;
 use App\Http\Controllers\Backend\BlogCategoryController;
+use App\Http\Controllers\Backend\BlogCommentController;
 use App\Http\Controllers\Backend\BlogPostController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\EntityController;
@@ -28,3 +29,4 @@ Route::put('/blog/category/change-status', [BlogCategoryController::class, 'chan
 Route::resource('/blog/category', BlogCategoryController::class, ['as' => 'blog']);
 Route::put('/blog/post/change-status', [BlogPostController::class, 'changeStatus'])->name('blog.post.change-status');
 Route::resource('/blog/post', BlogPostController::class, ['as' => 'blog']);
+Route::resource('/blog/comment', BlogCommentController::class, ['as' => 'blog'])->only(['index']);
